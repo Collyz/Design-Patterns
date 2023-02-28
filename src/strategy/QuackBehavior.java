@@ -1,4 +1,4 @@
-package ChapterOne;
+package strategy;
 
 public interface QuackBehavior {
 

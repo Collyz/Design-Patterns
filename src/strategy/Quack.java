@@ -1,4 +1,4 @@
-package ChapterOne;
+package strategy;
 
 public class Quack implements QuackBehavior{
 

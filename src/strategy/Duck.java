@@ -1,4 +1,4 @@
-package ChapterOne;
+package strategy;
 
 public class Duck {
     private String name;
