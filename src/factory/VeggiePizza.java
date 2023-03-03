@@ -1,8 +1,15 @@
 package factory;
 
-public class VeggiePizza extends Pizza{
+import factory.Pizza;
 
-    public void prepare() {
-        System.out.println("Dough, then sauce, then vegetables, finally ready to bake");
+public class VeggiePizza extends Pizza {
+
+    public VeggiePizza(){
+        this.name = "Veggie Pizza";
+        this.dough = "Regular Dough";
+        this.sauce = "Regular Sauce";
+        this.toppings.add("Low Moisture Mozzarella");
+        this.toppings.add("Vegetables");
     }
+
 }

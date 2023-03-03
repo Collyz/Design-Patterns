@@ -1,11 +1,13 @@
 package factory;
 
-import com.sun.security.jgss.GSSUtil;
+public class ClamPizza extends Pizza {
 
-public class ClamPizza extends Pizza{
-
-    public void prepare() {
-        System.out.println("First dough, then sauce, then clams, finally ready to bake");
+    public ClamPizza(){
+        this.name = "Clam Pizza";
+        this.dough = "Regular Dough";
+        this.sauce = "Regular Sauce";
+        this.toppings.add("Buffalo Mozzarella");
+        this.toppings.add("Clams");
     }
 
 }

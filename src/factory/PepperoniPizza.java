@@ -1,8 +1,15 @@
 package factory;
 
-public class PepperoniPizza extends Pizza{
+import factory.Pizza;
 
-    public void prepare() {
-        System.out.println("First dough, then sauce, then pepperoni, finally ready to bake");
+public class PepperoniPizza extends Pizza {
+
+    public PepperoniPizza(){
+        this.name = "Cheese Pizza";
+        this.dough = "Regular Dough";
+        this.sauce = "Regular Sauce";
+        this.toppings.add("Low Moisture Mozzarella");
+        this.toppings.add("Pepperoni");
     }
+
 }

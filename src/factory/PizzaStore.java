@@ -1,15 +1,19 @@
 package factory;
 
-public abstract class PizzaStore {
+public class PizzaStore {
+    SimplePizzaFactory factory;
+
+    public PizzaStore(SimplePizzaFactory factory){
+        this.factory = factory;
+    }
 
     public Pizza orderPizza(String type){
         Pizza pizza;
-        pizza = createPizza(type);
+        pizza = factory.createPizza(type);
         pizza.prepare();
         pizza.bake();
         pizza.cut();
         return pizza;
     }
 
-    abstract Pizza createPizza(String type);
 }
