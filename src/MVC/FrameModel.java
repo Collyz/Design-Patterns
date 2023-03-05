@@ -32,7 +32,7 @@ public class FrameModel {
     }
 
     public boolean checkExpression(){
-        return !this.expression.isEmpty() && this.expression != null;
+        return !this.expression.isEmpty();
     }
 
     /**
