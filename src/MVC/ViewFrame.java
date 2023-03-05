@@ -1,22 +1,16 @@
 package MVC;
 
-import net.objecthunter.exp4j.Expression;
-import net.objecthunter.exp4j.ExpressionBuilder;
-
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class ViewFrame implements ActionListener{
-    private JFrame frame;
+
+public class ViewFrame{
+    JFrame frame;
     private JTextField text1;
     protected JButton btn1, btn2;
-    private JLabel label1, respLabel;
-    private GroupLayout gl;
+    private JLabel label1, respLabel, imgLabel;
+
     FrameController fc;
 
 
@@ -43,16 +37,25 @@ public class ViewFrame implements ActionListener{
     public void initializeComponents(){
         //Initialized components added required eventListeners and set size of JFrame
         frame = new JFrame("Graphs");
-        frame.setSize(700, 500);
-        gl = new GroupLayout(frame);
-        text1 = new JTextField();
-        btn1 = new JButton("Calculate");
-        btn2 = new JButton("Get Graph");
+        frame.setSize(1280, 720);
+        text1 = new JTextField("");
         label1 = new JLabel("Enter a 2D function: f(x) = ");
         respLabel = new JLabel("");
+        imgLabel = new JLabel();
 
-        //Action listeners being added.
-        btn1.addActionListener(this);
+        //Abstract Action for buttons specifically
+        btn1 = new JButton(new AbstractAction("Calculate"){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fc.sendExpression(text1, respLabel);
+            }
+        });
+        btn2 = new JButton(new AbstractAction("Get Graph") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fc.requestGraph(respLabel, imgLabel);
+            }
+        });
     }
 
     /**
@@ -64,22 +67,26 @@ public class ViewFrame implements ActionListener{
         frame.add(btn2);
         frame.add(label1);
         frame.add(respLabel);
+        frame.add(imgLabel);
     }
 
+    /**
+     * Sets the component xy positions as well as other properties
+     */
     public void setComponentBounds(){
         //Arbitrary specific x for text-field
-        int middleX = (frame.getWidth()/2) - (300/4);
-        text1.setBounds(middleX, 50, 300, 30);
+        text1.setBounds(300, 30, 300, 30);
 
         //Buttons and their backgrounds
-        btn1.setBounds(150, 200, 100, 30);
-        btn1.setBackground(new Color(180, 231, 250));
-        btn2.setBounds(450, 200, 100, 30);
-        btn2.setBackground(new Color(180, 231, 250));
+        btn1.setBounds(150, 420, 100, 30);
+        btn1.setBackground(new Color(250, 234, 180));
+        btn2.setBounds(450, 420, 100, 30);
+        btn2.setBackground(new Color(250, 180, 197));
 
         //Labels
-        label1.setBounds(120, 50, 250, 30);
-        respLabel.setBounds(275, 80, 250, 30);
+        label1.setBounds(120, 30, 250, 30);
+        respLabel.setBounds(275, 60, 250, 30);
+        imgLabel.setBounds(20, 90, 600, 370);
     }
 
     /**
@@ -89,15 +96,6 @@ public class ViewFrame implements ActionListener{
         this.frame.getContentPane().setBackground(new Color(180, 231, 250));
         this.frame.setLayout(null);
         this.frame.setVisible(true);
-    }
-
-    /**
-     * When btn1 is clicked, the text-field is passed to
-     * controller to send data to model to be processed.
-     * @param event the event to be processed
-     */
-    public void actionPerformed(ActionEvent event) {
-        fc.sendInformation(text1);
     }
 
 }

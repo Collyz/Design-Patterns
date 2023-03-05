@@ -3,7 +3,7 @@ package MVC;
 import javax.swing.*;
 
 public class FrameController{
-    private FrameModel model;
+    private final FrameModel model;
 
     public FrameController(){
         model = new FrameModel();
@@ -13,8 +13,12 @@ public class FrameController{
      * Text-field text sent to model to be processed.
      * @param text - The text-field to manipulate
      */
-    public void sendInformation(JTextField text){
-        model.processExpression(text);
+    public void sendExpression(JTextField text, JLabel label){
+        model.writeToFile(text, label);
+    }
+
+    public void requestGraph(JLabel label,JLabel imageLabel){
+        model.createGraph(label, imageLabel);
     }
 
 }

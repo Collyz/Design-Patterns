@@ -16,14 +16,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES />
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$USER_HOME$/Downloads/jfreechart-1.5.3/jfreechart-1.5.3/src/main/java" />
-        </SOURCES>
-      </library>
-    </orderEntry>
+    <orderEntry type="library" exported="" name="jfree.jfreechart" level="project" />
   </component>
 </module>
