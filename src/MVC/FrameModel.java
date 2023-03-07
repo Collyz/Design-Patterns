@@ -48,6 +48,7 @@ public class FrameModel {
         return exp.evaluate();
     }
 
+
     public void setExpression(String expression){
         this.expression = expression;
     }
