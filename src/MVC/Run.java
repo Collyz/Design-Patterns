@@ -1,10 +1,8 @@
 package MVC;
 
-import javax.swing.*;
-
 public class Run {
     public static void main(String[] args) {
-        ViewFrame f = new ViewFrame();
+        FrameView f = new FrameView();
         f.run();
 
     }
